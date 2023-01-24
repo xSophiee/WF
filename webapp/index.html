@@ -28,7 +28,8 @@
         <script src="js/rbush.min.js"></script>
         <script src="js/labelgun.min.js"></script>
         <script src="js/labels.js"></script>
-        <script src="data/Veer_1.js"></script>
+        <script src="data/Route_1.js"></script>
+        <script src="data/Veer_2.js"></script>
         <script>
         var map = L.map('map', {
             zoomControl:true, maxZoom:28, minZoom:1
@@ -52,7 +53,49 @@
         });
         layer_CartoDbDarkMatter_0;
         map.addLayer(layer_CartoDbDarkMatter_0);
-        function pop_Veer_1(feature, layer) {
+        function pop_Route_1(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2"><strong>Name</strong><br />' + (feature.properties['Name'] !== null ? autolinker.link(feature.properties['Name'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Type'] !== null ? autolinker.link(feature.properties['Type'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Transport'] !== null ? autolinker.link(feature.properties['Transport'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_Route_1_0() {
+            return {
+                pane: 'pane_Route_1',
+                opacity: 1,
+                color: 'rgba(243,3,3,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 3.0,
+                fillOpacity: 0,
+                interactive: false,
+            }
+        }
+        map.createPane('pane_Route_1');
+        map.getPane('pane_Route_1').style.zIndex = 401;
+        map.getPane('pane_Route_1').style['mix-blend-mode'] = 'normal';
+        var layer_Route_1 = new L.geoJson(json_Route_1, {
+            attribution: '',
+            interactive: false,
+            dataVar: 'json_Route_1',
+            layerName: 'layer_Route_1',
+            pane: 'pane_Route_1',
+            onEachFeature: pop_Route_1,
+            style: style_Route_1_0,
+        });
+        bounds_group.addLayer(layer_Route_1);
+        map.addLayer(layer_Route_1);
+        function pop_Veer_2(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
                         <td colspan="2">' + (feature.properties['Name'] !== null ? autolinker.link(feature.properties['Name'].toLocaleString()) : '') + '</td>\
@@ -91,9 +134,9 @@
             layer.bindPopup(popupContent, {maxHeight: 400});
         }
 
-        function style_Veer_1_0() {
+        function style_Veer_2_0() {
             return {
-                pane: 'pane_Veer_1',
+                pane: 'pane_Veer_2',
                 opacity: 1,
                 color: 'rgba(27,163,175,1.0)',
                 dashArray: '',
@@ -104,20 +147,20 @@
                 interactive: false,
             }
         }
-        map.createPane('pane_Veer_1');
-        map.getPane('pane_Veer_1').style.zIndex = 401;
-        map.getPane('pane_Veer_1').style['mix-blend-mode'] = 'normal';
-        var layer_Veer_1 = new L.geoJson(json_Veer_1, {
+        map.createPane('pane_Veer_2');
+        map.getPane('pane_Veer_2').style.zIndex = 402;
+        map.getPane('pane_Veer_2').style['mix-blend-mode'] = 'normal';
+        var layer_Veer_2 = new L.geoJson(json_Veer_2, {
             attribution: '',
             interactive: false,
-            dataVar: 'json_Veer_1',
-            layerName: 'layer_Veer_1',
-            pane: 'pane_Veer_1',
-            onEachFeature: pop_Veer_1,
-            style: style_Veer_1_0,
+            dataVar: 'json_Veer_2',
+            layerName: 'layer_Veer_2',
+            pane: 'pane_Veer_2',
+            onEachFeature: pop_Veer_2,
+            style: style_Veer_2_0,
         });
-        bounds_group.addLayer(layer_Veer_1);
-        map.addLayer(layer_Veer_1);
+        bounds_group.addLayer(layer_Veer_2);
+        map.addLayer(layer_Veer_2);
         setBounds();
         </script>
     </body>

@@ -21,7 +21,6 @@
         </div>
         <script src="js/qgis2web_expressions.js"></script>
         <script src="js/leaflet.js"></script>
-        <script src="js/multi-style-layer.js"></script>
         <script src="js/leaflet.rotatedMarker.js"></script>
         <script src="js/leaflet.pattern.js"></script>
         <script src="js/leaflet-hash.js"></script>
@@ -34,17 +33,17 @@
         <script>
         var map = L.map('map', {
             zoomControl:true, maxZoom:28, minZoom:1
-        }).fitBounds([[43.13790108437153,-1.884472309408242],[52.3638055945798,31.695133936323916]]);
+        }).fitBounds([[35.356849022758716,-31.12518033202516],[62.274411258964015,74.94265981555631]]);
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
         var bounds_group = new L.featureGroup([]);
         function setBounds() {
         }
-        map.createPane('pane_CartoDbDarkMatter_0');
-        map.getPane('pane_CartoDbDarkMatter_0').style.zIndex = 400;
-        var layer_CartoDbDarkMatter_0 = L.tileLayer('http://basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png', {
-            pane: 'pane_CartoDbDarkMatter_0',
+        map.createPane('pane_CartoDbPositron_0');
+        map.getPane('pane_CartoDbPositron_0').style.zIndex = 400;
+        var layer_CartoDbPositron_0 = L.tileLayer('http://basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
+            pane: 'pane_CartoDbPositron_0',
             opacity: 1.0,
             attribution: '',
             minZoom: 1,
@@ -52,8 +51,8 @@
             minNativeZoom: 0,
             maxNativeZoom: 20
         });
-        layer_CartoDbDarkMatter_0;
-        map.addLayer(layer_CartoDbDarkMatter_0);
+        layer_CartoDbPositron_0;
+        map.addLayer(layer_CartoDbPositron_0);
         function pop_Dissolved_1(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
@@ -73,24 +72,11 @@
             return {
                 pane: 'pane_Dissolved_1',
                 opacity: 1,
-                color: 'rgba(0,0,0,1.0)',
+                color: 'rgba(219,30,42,1.0)',
                 dashArray: '',
-                lineCap: 'round',
-                lineJoin: 'round',
+                lineCap: 'square',
+                lineJoin: 'bevel',
                 weight: 3.0,
-                fillOpacity: 0,
-                interactive: true,
-            }
-        }
-        function style_Dissolved_1_1() {
-            return {
-                pane: 'pane_Dissolved_1',
-                opacity: 1,
-                color: 'rgba(243,0,0,1.0)',
-                dashArray: '',
-                lineCap: 'round',
-                lineJoin: 'round',
-                weight: 2.0,
                 fillOpacity: 0,
                 interactive: true,
             }
@@ -98,14 +84,14 @@
         map.createPane('pane_Dissolved_1');
         map.getPane('pane_Dissolved_1').style.zIndex = 401;
         map.getPane('pane_Dissolved_1').style['mix-blend-mode'] = 'normal';
-        var layer_Dissolved_1 = new L.geoJson.multiStyle(json_Dissolved_1, {
+        var layer_Dissolved_1 = new L.geoJson(json_Dissolved_1, {
             attribution: '',
             interactive: true,
             dataVar: 'json_Dissolved_1',
             layerName: 'layer_Dissolved_1',
             pane: 'pane_Dissolved_1',
             onEachFeature: pop_Dissolved_1,
-            styles: [style_Dissolved_1_0,style_Dissolved_1_1,]
+            style: style_Dissolved_1_0,
         });
         bounds_group.addLayer(layer_Dissolved_1);
         map.addLayer(layer_Dissolved_1);
